@@ -84,6 +84,17 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       accessibilityLabel,
     } = props;
     const [displayValue, setDisplayValue] = useState("");
+    
+    useEffect(() => {
+      if (value != null) {
+          list.map(l => {
+              if (l.value == value) {
+                  setDisplayValue(l.label);
+              }
+          })
+      }
+    }, [displayValue, setDisplayValue, value]);
+    
     const [inputLayout, setInputLayout] = useState({
       height: 0,
       width: 0,
